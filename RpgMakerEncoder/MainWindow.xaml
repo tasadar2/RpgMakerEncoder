@@ -1,0 +1,91 @@
+﻿<Window x:Class="RpgMakerEncoder.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RpgMakerEncoder"
+        mc:Ignorable="d"
+        Title="RPG Maker Encoder" Height="187" Width="506" Loaded="Window_Loaded" Closing="Window_Closing" WindowStartupLocation="CenterScreen" Icon="RpgMakerEncoder.ico">
+
+    <Window.Resources>
+        <BitmapImage x:Key="RpgMakerIcon" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="pack://application:,,,/Images/RPGXP.png"/>
+        <BitmapImage x:Key="SourceIcon" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="pack://application:,,,/Images/Code.png"/>
+    </Window.Resources>
+
+    <Grid Margin="3">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="propertyGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="3" Text="Game Directory"/>
+            <TextBox x:Name="GameDirectoryText" Height="23" VerticalAlignment="Center" Margin="3" Grid.Row="0" Grid.Column="1" IsReadOnly="True"/>
+            <Button x:Name="GameDirectoryButton" Content="..." Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" Margin="3" Width="26" Click="GameDirectoryButton_Click"/>
+
+            <TextBlock HorizontalAlignment="Right" Text="Source Directory" VerticalAlignment="Center" Margin="3" Grid.Row="1" Grid.Column="0" />
+            <TextBox x:Name="SourceDirectoryText" Height="23" VerticalAlignment="Center" Margin="3" Grid.Row="1" Grid.Column="1" IsReadOnly="True"/>
+            <Button x:Name="SourceDirectoryButton" Content="..." Grid.Column="2" HorizontalAlignment="Center" Margin="3" Width="26" Grid.Row="1" Click="SourceDirectoryButton_Click"/>
+
+        </Grid>
+
+        <Grid x:Name="actionGrid" Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="buttonDecode" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3" Click="buttonDecode_Click" FontSize="16" FontWeight="Bold">
+                <Grid Margin="3,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="41*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="{DynamicResource RpgMakerIcon}" Width="32" Height="32"/>
+                    <TextBlock Grid.Column="1" Margin="6,9,10,10" Text="-&gt; Decode -&gt;"/>
+                    <Image HorizontalAlignment="Center" Height="32" VerticalAlignment="Center" Width="32" Grid.Column="2" Source="{DynamicResource SourceIcon}"/>
+                </Grid>
+            </Button>
+            <Button x:Name="buttonEncode" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3" Click="buttonEncode_Click" Grid.Column="2" FontWeight="Bold" FontSize="16">
+                <Grid Margin="3,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="41*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="{DynamicResource SourceIcon}" Width="32" Height="32"/>
+                    <TextBlock Grid.Column="1" Margin="6,9,10,10" Text="-&gt; Encode -&gt;"/>
+                    <Image HorizontalAlignment="Center" Height="32" VerticalAlignment="Center" Width="32" Grid.Column="2" Source="{DynamicResource RpgMakerIcon}"/>
+                </Grid>
+
+            </Button>
+        </Grid>
+        
+        <Grid x:Name="StatusGrid" Margin="0" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="131*"/>
+                <ColumnDefinition Width="361*"/>
+            </Grid.ColumnDefinitions>
+            
+            <ProgressBar x:Name="StatusBar" Grid.Column="1" Height="24" Margin="3" VerticalAlignment="Center"/>
+            <TextBlock x:Name="StatusText" HorizontalAlignment="Left" Margin="3" TextWrapping="Wrap" Text="Ready" VerticalAlignment="Center"/>
+        </Grid>
+
+    </Grid>
+</Window>
