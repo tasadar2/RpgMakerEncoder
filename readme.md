@@ -1,6 +1,8 @@
 # RpgMakerEncoder
 
-The purpose of this application is to decode RPG Maker files so they can be used with source control. The application is capable of effectively writing RPG Maker files as json files, and back again.
+### Purpose
+The purpose of this application is to decode RPG Maker files so they can be used with source control.
+The application is capable of effectively writing RPG Maker files as json files, and back again.
 
 ### Background
 RPG Maker files are binaries marshaled with Ruby, which makes it near impossible to use them in most source control systems.
@@ -26,9 +28,9 @@ I chose json as the source control file format as it is relatively easy to resol
 
 * Open RpgMakerEncoder from the doanloded directory.
 
-* If this is the first time opening the application, verify that the Game and Source directories match the intended layout.
+* Verify that the Game and Source directories match the intended layout.
 
-   It is recomended to check in the `settings.json` file so the setup is consistient across contributers.
+   It is recomended to check-in the `settings.json` file so the setup is consistient across contributers.
    The `settings.json` file will be saved upon application exit.
 
 * Click `Decode` to write RPG Maker files as json files.
