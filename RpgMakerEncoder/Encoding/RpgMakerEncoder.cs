@@ -60,6 +60,7 @@ namespace RpgMakerEncoder.Encoding
             var relativeFile = DirectoryHelper.MakeRelative(SourcePath, sourceFile);
             var gameFile = Path.GetFullPath(Path.Combine(GamePath, relativeFile));
             gameFile = Path.ChangeExtension(gameFile, "rxdata");
+            DirectoryHelper.EnsureDirectoryExists(Path.GetDirectoryName(gameFile));
 
             _rubyEncoder.Encode(gameToken, gameFile, EncoderOptions);
         }
@@ -84,6 +85,7 @@ namespace RpgMakerEncoder.Encoding
             var relativeFile = DirectoryHelper.MakeRelative(GamePath, gameFile);
             var sourceFile = Path.GetFullPath(Path.Combine(SourcePath, relativeFile));
             sourceFile = Path.ChangeExtension(sourceFile, "json");
+            DirectoryHelper.EnsureDirectoryExists(Path.GetDirectoryName(sourceFile));
 
             _jsonFileProcessor.Save(sourceToken, sourceFile);
         }
